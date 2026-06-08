@@ -158,6 +158,12 @@ func _resolver_vitoria():
 	if not is_instance_valid(self):
 		return
 	GameManager.combate_concluido()
+
+	if GameManager.sala_atual == "Boss":
+		queue_free()
+		GameManager.vitoria()
+		return
+
 	_mostrar_botao_inspecao()
 	
 func _resolver_derrota():

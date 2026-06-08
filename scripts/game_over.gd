@@ -15,9 +15,8 @@ func _on_voltar_pressed():
 	GameManager.pops_restantes = GameManager.MAX_POPS
 
 	GameManager.alavanca_ativada = false
-	GameManager.chave_no_mercado = false
 	GameManager.mercado_inspecionado = false
-	
+	GameManager.salas_visitadas = 0
 	for nome in GameManager.salas:
 		GameManager.salas[nome]["combate_concluido"] = false
 		GameManager.salas[nome]["desbloqueada"] = false

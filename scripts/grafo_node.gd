@@ -49,13 +49,11 @@ func _draw():
 	var sala_atual = GameManager.sala_atual
 	var vizinhos_acessiveis = _get_vizinhos_acessiveis()
 
-	# ── Desenha arestas ──
 	for nome in salas:
 		for vizinho in salas[nome]["vizinhos"]:
 			if posicoes.has(nome) and posicoes.has(vizinho):
 				draw_line(posicoes[nome], posicoes[vizinho], COR_LINHA, 1.5)
 
-	# ── Desenha nós ──
 	for nome in posicoes:
 		if not salas.has(nome):
 			continue
@@ -64,13 +62,11 @@ func _draw():
 		var cor = _get_cor_sala(nome, sala_atual, vizinhos_acessiveis)
 		var raio = RAIO_SALA
 
-		# Brilho pulsante nos acessíveis
 		if nome in vizinhos_acessiveis and nome == sala_hover:
 			draw_circle(pos, raio + 8, Color(cor.r, cor.g, cor.b, 0.2))
 
 		draw_circle(pos, raio, cor)
 
-		# Label da sala
 		var fonte_cor = Color.BLACK if cor.v > 0.5 else Color.WHITE
 		draw_string(
 			ThemeDB.fallback_font,
@@ -82,7 +78,6 @@ func _draw():
 			fonte_cor if false else Color.WHITE
 		)
 
-	# ── Indicador da sala atual ──
 	var pos_atual = posicoes.get(sala_atual, Vector2.ZERO)
 	draw_arc(pos_atual, RAIO_SALA + 5, 0, TAU, 32, COR_SALA_ATUAL, 2.0)
 
@@ -179,11 +174,9 @@ func _mostrar_popup(texto: String):
 	popup.autowrap_mode = TextServer.AUTOWRAP_WORD
 	popup.custom_minimum_size = Vector2(300, 0)
 	
-	# Fundo escuro pra contraste
 	popup.add_theme_color_override("font_color", Color.WHITE)
 	popup.add_theme_stylebox_override("normal", _criar_fundo_popup())
 	
-	# Canto inferior esquerdo
 	popup.position = Vector2(16, get_viewport().size.y - 180)
 	get_parent().add_child(popup)
 

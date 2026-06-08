@@ -193,7 +193,7 @@ var jogador = {
 	"nome": "Herói",
 	"hp": 150,
 	"hp_max": 150,
-	"ataque": 100,
+	"ataque": 250,
 	"precisao": 100,
 	"defendendo": false,
 	"tem_chave": false, 
@@ -201,13 +201,15 @@ var jogador = {
 }
 
 var sala_atual: String = "Entrada"
-
+var salas_visitadas: int = 0
 var alavanca_ativada: bool = false
 var chave_nas_catacumbas: bool = false
 var mercado_inspecionado: bool = false
 var pilha: Array = []
 const MAX_POPS: int = 5
 var pops_restantes: int = MAX_POPS
+var usou_alavanca: bool = false
+var usou_chave: bool = false
 
 func _ready():
 	pilha.push_back("Entrada")
@@ -233,6 +235,7 @@ func ir_para(destino: String) -> bool:
 	pilha.push_back(destino)
 	sala_atual = destino
 	_limpar_overlays()
+	salas_visitadas += 1
 	get_tree().change_scene_to_file(salas[sala_atual]["cena"])
 	return true
 
@@ -259,6 +262,7 @@ func voltar() -> bool:
 
 func ativar_alavanca():
 	alavanca_ativada = true
+	usou_alavanca = true
 	print("Alavanca ativada! A Câmara foi destrancada.")
 
 func jogar_chave_pela_abertura():
@@ -270,6 +274,7 @@ func jogar_chave_pela_abertura():
 		return
 	jogador["tem_chave"] = false
 	chave_nas_catacumbas = true
+	usou_chave = true
 	print("A chave caiu pelas catacumbas!")
 	
 func checar_roubo_encruzilhada():
@@ -312,3 +317,21 @@ func _limpar_overlays():
             "res://scenes/combat/GerenciadorCombate.tscn"
 		]:
 			no.queue_free()
+
+func calcular_pontuacao() -> int:
+	var pontos_base = 1000
+	var penalidade_salas = salas_visitadas * 20
+	var penalidade_pops = (MAX_POPS - pops_restantes) * 50
+
+	# Bônus por resolver puzzles
+	var bonus_alavanca = 200 if usou_alavanca else 0
+	var bonus_chave = 200 if usou_chave else 0
+
+	# Bônus por terminar com vida alta
+	var bonus_vida = int((float(jogador["hp"]) / jogador["hp_max"]) * 150)
+
+	return max(0, pontos_base - penalidade_salas - penalidade_pops + bonus_alavanca + bonus_chave + bonus_vida)
+
+func vitoria():
+	var tela = preload("res://scenes/ui/Vitoria.tscn").instantiate()
+	get_tree().root.add_child(tela)
