@@ -3,6 +3,7 @@ extends CanvasLayer
 @onready var label_pontos = $Control/LabelPontos
 @onready var label_detalhes = $Control/LabelDetalhes
 @onready var botao = $Control/Button
+@onready var container_fila = $CanvasLayer/ContainerFila  # HBoxContainer no topo
 
 func _ready():
 	var pontos = GameManager.calcular_pontuacao()

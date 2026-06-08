@@ -193,7 +193,7 @@ var jogador = {
 	"nome": "Herói",
 	"hp": 150,
 	"hp_max": 150,
-	"ataque": 250,
+	"ataque": 25,
 	"precisao": 100,
 	"defendendo": false,
 	"tem_chave": false, 

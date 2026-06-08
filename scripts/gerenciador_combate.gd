@@ -10,17 +10,36 @@ var personagem_atual = null
 @onready var label_status = $CanvasLayer/LabelStatus
 @onready var label_hp_jogador = $CanvasLayer/LabelHpJogador
 @onready var container_acoes = $CanvasLayer/ContainerAcoes
+@onready var container_fila = $CanvasLayer/ContainerFila
 
 func _ready():
 	iniciar_combate()
 
 func iniciar_combate():
 	inimigos_vivos = GameManager.get_inimigos_sala_atual()
+
+	# Todos rolam iniciativa
+	var participantes = []
 	for inimigo in inimigos_vivos:
-		fila_combate.push_back(inimigo)
-	fila_combate.push_back(GameManager.jogador)
+		participantes.append({
+			"personagem": inimigo,
+			"iniciativa": randi_range(1, 20)
+		})
+	participantes.append({
+		"personagem": GameManager.jogador,
+		"iniciativa": randi_range(1, 20)
+	})
+
+	# Ordena por iniciativa decrescente
+	participantes.sort_custom(func(a, b): return a["iniciativa"] > b["iniciativa"])
+
+	# Monta a fila na ordem
+	for p in participantes:
+		fila_combate.push_back(p["personagem"])
+
 	gerar_botoes_inimigos()
 	atualizar_interface()
+	atualizar_visual_fila()
 	proximo_turno()
 
 func gerar_botoes_inimigos():
@@ -118,6 +137,7 @@ func atualizar_interface():
 			else:
 				botao.text = inimigo["nome"] + " (morto)"
 				botao.disabled = true
+	atualizar_visual_fila()
 
 func _habilitar_botoes(habilitar: bool):
 	botao_defender.disabled = not habilitar
@@ -242,3 +262,38 @@ func _on_inspecionar_pressed():
 func _on_continuar_pressed():
 	queue_free()
 	GameManager.abrir_mapa()
+
+func atualizar_visual_fila():
+	# Limpa o container
+	for filho in container_fila.get_children():
+		filho.queue_free()
+
+	# Mostra todos na fila + quem já agiu (fila completa = fila_combate + personagem_atual)
+	var fila_completa = []
+	if personagem_atual != null and personagem_atual["hp"] > 0:
+		fila_completa.append(personagem_atual)
+	for p in fila_combate:
+		if p["hp"] > 0:
+			fila_completa.append(p)
+
+	for i in range(fila_completa.size()):
+		var p = fila_completa[i]
+		var label = Label.new()
+
+		# Destaca quem é o atual (primeiro da lista)
+		if i == 0:
+			label.text = "► " + p["nome"]
+			label.add_theme_color_override("font_color", Color.YELLOW)
+		else:
+			label.text = p["nome"]
+			label.add_theme_color_override("font_color", Color.WHITE)
+
+		# Separador entre nomes
+		if i < fila_completa.size() - 1:
+			var seta = Label.new()
+			seta.text = " → "
+			seta.add_theme_color_override("font_color", Color(0.5, 0.5, 0.5))
+			container_fila.add_child(label)
+			container_fila.add_child(seta)
+		else:
+			container_fila.add_child(label)

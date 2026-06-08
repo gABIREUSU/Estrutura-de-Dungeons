@@ -64,10 +64,21 @@ grow_vertical = 0
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
+offset_left = 379.0
 offset_top = 29.0
-offset_right = 20.0
+offset_right = 419.0
 offset_bottom = 69.0
 grow_horizontal = 2
+
+[node name="ContainerFila" type="HBoxContainer" parent="CanvasLayer" unique_id=1352147481]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 28.0
+offset_right = 20.0
+offset_bottom = 68.0
+grow_horizontal = 2
+alignment = 1
 
 [connection signal="pressed" from="CanvasLayer/BotaoDefender" to="." method="_on_botao_defender_pressed"]
