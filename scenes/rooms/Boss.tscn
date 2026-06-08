@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dqk8kikepa2wg"]
+
+[ext_resource type="Script" uid="uid://ddt2fbb2ie82d" path="res://scripts/sala_base.gd" id="1_3bkjg"]
+
+[node name="Boss" type="Node2D" unique_id=1222433288]
+script = ExtResource("1_3bkjg")
+
+[node name="Label" type="Label" parent="." unique_id=275306513]
+offset_left = 65.0
+offset_top = 161.0
+offset_right = 1078.0
+offset_bottom = 448.0
+text = "Boss"
+horizontal_alignment = 1
+vertical_alignment = 1

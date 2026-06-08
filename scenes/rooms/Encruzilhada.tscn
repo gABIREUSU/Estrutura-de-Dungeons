@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://6aspcmcdapv8"]
+
+[ext_resource type="Script" uid="uid://ddt2fbb2ie82d" path="res://scripts/sala_base.gd" id="1_euwo8"]
+
+[node name="Encruzilhada" type="Node2D" unique_id=1675616238]
+script = ExtResource("1_euwo8")
+
+[node name="Label" type="Label" parent="." unique_id=1105895700]
+offset_left = 65.0
+offset_top = 161.0
+offset_right = 1078.0
+offset_bottom = 448.0
+text = "Encruzilhada"
+horizontal_alignment = 1
+vertical_alignment = 1

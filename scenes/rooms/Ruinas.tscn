@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cy3ewnc3vm3hb"]
+
+[ext_resource type="Script" uid="uid://ddt2fbb2ie82d" path="res://scripts/sala_base.gd" id="1_buymo"]
+
+[node name="Ruinas" type="Node2D" unique_id=1020847786]
+script = ExtResource("1_buymo")
+
+[node name="Label" type="Label" parent="." unique_id=1555187776]
+offset_left = 65.0
+offset_top = 161.0
+offset_right = 1078.0
+offset_bottom = 448.0
+text = "Ruinas"
+horizontal_alignment = 1
+vertical_alignment = 1

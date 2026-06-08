@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bchd3e5g3p3ev"]
+
+[ext_resource type="Script" uid="uid://ddt2fbb2ie82d" path="res://scripts/sala_base.gd" id="1_jodto"]
+
+[node name="Torre" type="Node2D" unique_id=128251502]
+script = ExtResource("1_jodto")
+
+[node name="Label" type="Label" parent="." unique_id=1012975186]
+offset_left = 65.0
+offset_top = 161.0
+offset_right = 1078.0
+offset_bottom = 448.0
+text = "Torre"
+horizontal_alignment = 1
+vertical_alignment = 1

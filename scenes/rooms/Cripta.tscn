@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://ctmt4cqyjq2sb"]
+
+[ext_resource type="Script" uid="uid://ddt2fbb2ie82d" path="res://scripts/sala_base.gd" id="1_xsuus"]
+
+[node name="Cripta" type="Node2D" unique_id=1707583926]
+script = ExtResource("1_xsuus")
+
+[node name="Label" type="Label" parent="." unique_id=435297973]
+offset_left = 65.0
+offset_top = 161.0
+offset_right = 1078.0
+offset_bottom = 448.0
+text = "Cripta"
+horizontal_alignment = 1
+vertical_alignment = 1

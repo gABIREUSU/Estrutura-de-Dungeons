@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c8x1b5yka725d"]
+
+[ext_resource type="Script" uid="uid://ddt2fbb2ie82d" path="res://scripts/sala_base.gd" id="1_lfqek"]
+
+[node name="Antesala" type="Node2D" unique_id=2075661922]
+script = ExtResource("1_lfqek")
+
+[node name="Label" type="Label" parent="." unique_id=1950900040]
+offset_left = 66.0
+offset_top = 149.0
+offset_right = 1079.0
+offset_bottom = 436.0
+text = "Antesala"
+horizontal_alignment = 1
+vertical_alignment = 1

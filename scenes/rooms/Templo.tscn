@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://tqv0uqcypth"]
+
+[ext_resource type="Script" uid="uid://ddt2fbb2ie82d" path="res://scripts/sala_base.gd" id="1_f58yd"]
+
+[node name="Templo" type="Node2D" unique_id=426096251]
+script = ExtResource("1_f58yd")
+
+[node name="Label" type="Label" parent="." unique_id=1179664778]
+offset_left = 65.0
+offset_top = 161.0
+offset_right = 1078.0
+offset_bottom = 448.0
+text = "Templo"
+horizontal_alignment = 1
+vertical_alignment = 1

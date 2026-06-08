@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://d2t34wnea7bsl"]
+
+[ext_resource type="Script" uid="uid://45jsbj3shph1" path="res://scripts/mapa_navegacao.gd" id="1_bdv3g"]
+[ext_resource type="Script" uid="uid://wuot38h7iq1q" path="res://scripts/grafo_node.gd" id="2_sf6y4"]
+
+[node name="MapaNavegacao" type="CanvasLayer" unique_id=104438609]
+script = ExtResource("1_bdv3g")
+
+[node name="Control" type="Control" parent="." unique_id=1219088371]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1154.0
+offset_bottom = 651.0
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1347533907]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.80784315)
+
+[node name="GrafoNode" type="Node2D" parent="Control" unique_id=752271336]
+script = ExtResource("2_sf6y4")
+
+[node name="botao_voltar" type="Button" parent="Control" unique_id=138089697]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -87.0
+offset_right = 49.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Voltar"
+
+[node name="ContainerAcoes" type="HBoxContainer" parent="Control" unique_id=1588415897]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 102.0
+offset_top = -81.0
+offset_right = 142.0
+offset_bottom = -41.0
+grow_vertical = 0

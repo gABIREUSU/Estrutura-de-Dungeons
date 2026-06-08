@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dyufayqtd77xp"]
+
+[ext_resource type="Script" uid="uid://ddt2fbb2ie82d" path="res://scripts/sala_base.gd" id="1_wppmu"]
+
+[node name="Altar" type="Node2D" unique_id=596123856]
+script = ExtResource("1_wppmu")
+
+[node name="Label" type="Label" parent="." unique_id=1122489278]
+offset_left = 65.0
+offset_top = 161.0
+offset_right = 1078.0
+offset_bottom = 448.0
+text = "Altar"
+horizontal_alignment = 1
+vertical_alignment = 1

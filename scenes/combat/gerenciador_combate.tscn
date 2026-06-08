@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://cggio7ugnxg2r"]
+
+[ext_resource type="Script" uid="uid://ce4wfaia8bb3v" path="res://scripts/gerenciador_combate.gd" id="1_ob1xn"]
+
+[node name="GerenciadorCombate" type="Node2D" unique_id=1966226639]
+script = ExtResource("1_ob1xn")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1597495578]
+
+[node name="LabelStatus" type="Label" parent="CanvasLayer" unique_id=1398243648]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -111.0
+offset_top = -135.0
+offset_right = 111.0
+offset_bottom = -112.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Seu turno! Escolha uma ação"
+horizontal_alignment = 1
+
+[node name="LabelHpJogador" type="Label" parent="CanvasLayer" unique_id=971604205]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = -93.0
+offset_right = 101.0
+offset_bottom = -70.0
+grow_vertical = 0
+text = "10Hp"
+
+[node name="BotaoDefender" type="Button" parent="CanvasLayer" unique_id=1245950580]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.5
+offset_top = -99.0
+offset_right = 40.5
+offset_bottom = -68.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Defender"
+
+[node name="ContainerInimigos" type="HBoxContainer" parent="CanvasLayer" unique_id=1033032322]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -58.0
+offset_right = 20.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ContainerAcoes" type="HBoxContainer" parent="CanvasLayer" unique_id=1045701280]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 29.0
+offset_right = 20.0
+offset_bottom = 69.0
+grow_horizontal = 2
+
+[connection signal="pressed" from="CanvasLayer/BotaoDefender" to="." method="_on_botao_defender_pressed"]
