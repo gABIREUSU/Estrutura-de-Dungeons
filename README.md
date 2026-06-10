@@ -113,9 +113,10 @@ res://
 
 ## 👥 Integrantes
 
-| Nome | GitHub |
-|---|---|
-| Gabriel Reus | [@gABIREUSU](https://github.com/gABIREUSU) |
+| Nome |
+|---|
+| Gabriel Andrade |
+| Taylor  |
 
 ---
 
