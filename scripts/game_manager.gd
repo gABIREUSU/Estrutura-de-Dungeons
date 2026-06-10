@@ -194,7 +194,7 @@ var jogador = {
 	"hp": 150,
 	"hp_max": 150,
 	"ataque": 25,
-	"precisao": 100,
+	"precisao": 85,
 	"defendendo": false,
 	"tem_chave": false, 
 	"tipo": "jogador"

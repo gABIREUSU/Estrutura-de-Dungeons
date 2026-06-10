@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dyufayqtd77xp"]
 
 [ext_resource type="Script" uid="uid://ddt2fbb2ie82d" path="res://scripts/sala_base.gd" id="1_wppmu"]
+[ext_resource type="Texture2D" uid="uid://dbt4u0v4dmxbe" path="res://imagens/Altar.png" id="2_ejn4e"]
 
 [node name="Altar" type="Node2D" unique_id=596123856]
 script = ExtResource("1_wppmu")
@@ -13,3 +14,8 @@ offset_bottom = 448.0
 text = "Altar"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Altar" type="Sprite2D" parent="." unique_id=1479698275]
+scale = Vector2(0.6928799, 0.6928799)
+texture = ExtResource("2_ejn4e")
+centered = false

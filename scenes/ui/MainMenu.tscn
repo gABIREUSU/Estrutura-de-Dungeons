@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b6vem120gbw46"]
 
 [ext_resource type="Script" uid="uid://2cpbapgnxm6p" path="res://scripts/main_menu.gd" id="1_vjtqc"]
+[ext_resource type="Texture2D" uid="uid://cw7fn0p078rke" path="res://imagens/Menu.png" id="2_6jbdy"]
 
 [node name="Menu" type="Control" unique_id=357275353]
 layout_mode = 3
@@ -19,18 +20,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="." unique_id=225305180]
-layout_mode = 0
-offset_left = 207.0
-offset_top = 147.0
-offset_right = 939.0
-offset_bottom = 234.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0.7294118, 0)
-theme_override_colors/font_outline_color = Color(0.5522065, 0.68774927, 1, 1)
-theme_override_font_sizes/font_size = 63
-text = "Estruturas de Dungeons"
-vertical_alignment = 1
+[node name="Menu" type="Sprite2D" parent="." unique_id=251413719]
+scale = Vector2(0.69075453, 0.69075453)
+texture = ExtResource("2_6jbdy")
+centered = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2112644999]
 layout_mode = 0

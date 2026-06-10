@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c63hkh3ln4kaj"]
 
 [ext_resource type="Script" uid="uid://ddt2fbb2ie82d" path="res://scripts/sala_base.gd" id="1_k76s1"]
+[ext_resource type="Texture2D" uid="uid://cq8ncksngle75" path="res://imagens/Pantano.png" id="2_cfx50"]
 
 [node name="Pantano" type="Node2D" unique_id=1053269062]
 script = ExtResource("1_k76s1")
@@ -13,3 +14,8 @@ offset_bottom = 448.0
 text = "Pantano"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Pantano" type="Sprite2D" parent="." unique_id=677465639]
+scale = Vector2(0.6918173, 0.6918173)
+texture = ExtResource("2_cfx50")
+centered = false

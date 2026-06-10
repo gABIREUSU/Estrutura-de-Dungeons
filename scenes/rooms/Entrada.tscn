@@ -4,12 +4,3 @@
 
 [node name="Entrada" type="Node2D" unique_id=1687435528]
 script = ExtResource("1_gfwhh")
-
-[node name="Label" type="Label" parent="." unique_id=987222129]
-offset_left = 65.0
-offset_top = 161.0
-offset_right = 1078.0
-offset_bottom = 448.0
-text = "Entrada"
-horizontal_alignment = 1
-vertical_alignment = 1

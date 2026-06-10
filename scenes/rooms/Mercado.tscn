@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://brwxrbteup4ii"]
 
 [ext_resource type="Script" uid="uid://ddt2fbb2ie82d" path="res://scripts/sala_base.gd" id="1_uhmlm"]
+[ext_resource type="Texture2D" uid="uid://boycei11t4won" path="res://imagens/Mercado.png" id="2_7g4ma"]
 
 [node name="Mercado" type="Node2D" unique_id=2134578116]
 script = ExtResource("1_uhmlm")
@@ -13,3 +14,8 @@ offset_bottom = 448.0
 text = "Mercado"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Mercado" type="Sprite2D" parent="." unique_id=572951318]
+scale = Vector2(0.69500536, 0.6950053)
+texture = ExtResource("2_7g4ma")
+centered = false

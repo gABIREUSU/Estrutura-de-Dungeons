@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ck5r7014fx3hk"]
 
 [ext_resource type="Script" uid="uid://ddt2fbb2ie82d" path="res://scripts/sala_base.gd" id="1_nnfng"]
+[ext_resource type="Texture2D" uid="uid://cfegqm0eyrmdm" path="res://imagens/Floresta.png" id="2_mv6q6"]
 
 [node name="Floresta" type="Node2D" unique_id=771998481]
 script = ExtResource("1_nnfng")
@@ -13,3 +14,8 @@ offset_bottom = 448.0
 text = "Floresta"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Floresta" type="Sprite2D" parent="." unique_id=1370796561]
+scale = Vector2(0.6928799, 0.6928799)
+texture = ExtResource("2_mv6q6")
+centered = false

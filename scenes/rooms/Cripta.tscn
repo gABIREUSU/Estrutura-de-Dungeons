@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ctmt4cqyjq2sb"]
 
 [ext_resource type="Script" uid="uid://ddt2fbb2ie82d" path="res://scripts/sala_base.gd" id="1_xsuus"]
+[ext_resource type="Texture2D" uid="uid://bh5kunr71jd66" path="res://imagens/Cripta.png" id="2_e3oek"]
 
 [node name="Cripta" type="Node2D" unique_id=1707583926]
 script = ExtResource("1_xsuus")
@@ -13,3 +14,7 @@ offset_bottom = 448.0
 text = "Cripta"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Cripta" type="Sprite2D" parent="." unique_id=728723268]
+position = Vector2(318, 196)
+texture = ExtResource("2_e3oek")

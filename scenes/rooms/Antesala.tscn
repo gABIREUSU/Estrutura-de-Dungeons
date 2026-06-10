@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c8x1b5yka725d"]
 
 [ext_resource type="Script" uid="uid://ddt2fbb2ie82d" path="res://scripts/sala_base.gd" id="1_lfqek"]
+[ext_resource type="Texture2D" uid="uid://ijpe6orc4xey" path="res://imagens/Antesala.png" id="2_nlrxv"]
 
 [node name="Antesala" type="Node2D" unique_id=2075661922]
 script = ExtResource("1_lfqek")
@@ -13,3 +14,8 @@ offset_bottom = 436.0
 text = "Antesala"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Antesala" type="Sprite2D" parent="." unique_id=1018880316]
+scale = Vector2(0.6918172, 0.6918172)
+texture = ExtResource("2_nlrxv")
+centered = false

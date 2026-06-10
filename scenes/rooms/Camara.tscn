@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ddgv1hs3i0qta"]
 
 [ext_resource type="Script" uid="uid://ddt2fbb2ie82d" path="res://scripts/sala_base.gd" id="1_207k7"]
+[ext_resource type="Texture2D" uid="uid://bgafimupy1uhr" path="res://imagens/Camara.png" id="2_6agto"]
 
 [node name="Camara" type="Node2D" unique_id=2045247382]
 script = ExtResource("1_207k7")
@@ -13,3 +14,8 @@ offset_bottom = 448.0
 text = "Camara"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Camara" type="Sprite2D" parent="." unique_id=2017356302]
+position = Vector2(578.0223, 322.74997)
+scale = Vector2(0.6997874, 0.6997874)
+texture = ExtResource("2_6agto")

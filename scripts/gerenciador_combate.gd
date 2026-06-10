@@ -18,7 +18,6 @@ func _ready():
 func iniciar_combate():
 	inimigos_vivos = GameManager.get_inimigos_sala_atual()
 
-	# Todos rolam iniciativa
 	var participantes = []
 	for inimigo in inimigos_vivos:
 		participantes.append({
@@ -30,10 +29,8 @@ func iniciar_combate():
 		"iniciativa": randi_range(1, 20)
 	})
 
-	# Ordena por iniciativa decrescente
 	participantes.sort_custom(func(a, b): return a["iniciativa"] > b["iniciativa"])
 
-	# Monta a fila na ordem
 	for p in participantes:
 		fila_combate.push_back(p["personagem"])
 

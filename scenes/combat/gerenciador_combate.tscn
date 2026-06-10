@@ -5,6 +5,11 @@
 [node name="GerenciadorCombate" type="Node2D" unique_id=1966226639]
 script = ExtResource("1_ob1xn")
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1668466690]
+offset_right = 1153.0
+offset_bottom = 652.0
+color = Color(0, 0, 0, 0.6784314)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1597495578]
 
 [node name="LabelStatus" type="Label" parent="CanvasLayer" unique_id=1398243648]
@@ -14,9 +19,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -111.0
-offset_top = -135.0
+offset_top = -166.0
 offset_right = 111.0
-offset_bottom = -112.0
+offset_bottom = -143.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Seu turno! Escolha uma ação"
@@ -26,10 +31,10 @@ horizontal_alignment = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 60.0
-offset_top = -93.0
-offset_right = 101.0
-offset_bottom = -70.0
+offset_left = 79.0
+offset_top = -67.0
+offset_right = 120.0
+offset_bottom = -44.0
 grow_vertical = 0
 text = "10Hp"
 
@@ -40,9 +45,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -40.5
-offset_top = -99.0
+offset_top = -130.0
 offset_right = 40.5
-offset_bottom = -68.0
+offset_bottom = -99.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Defender"
@@ -54,9 +59,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -20.0
-offset_top = -58.0
+offset_top = -89.0
 offset_right = 20.0
-offset_bottom = -18.0
+offset_bottom = -49.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -75,9 +80,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -20.0
-offset_top = 28.0
+offset_top = 27.0
 offset_right = 20.0
-offset_bottom = 68.0
+offset_bottom = 67.0
 grow_horizontal = 2
 alignment = 1
 
