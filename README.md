@@ -1,127 +1,224 @@
+<div align="center">
+
 # ⚔️ Estrutura de Dungeons
 
-> Trabalho prático da disciplina **Estrutura de Dados II** — FUMEC  
-> Desenvolvido em **Godot 4** como demonstração aplicada de estruturas de dados clássicas em um jogo funcional.
+<img src="https://img.shields.io/badge/Godot-4.x-478CBF?style=for-the-badge&logo=godot-engine&logoColor=white"/>
+<img src="https://img.shields.io/badge/GDScript-blue?style=for-the-badge&logo=godot-engine&logoColor=white"/>
+<img src="https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow?style=for-the-badge"/>
 
----
+<br/>
 
-## 🎮 Sobre o Jogo
+> RPG tático por turnos desenvolvido como trabalho prático de **Estrutura de Dados II**  
+> Cada mecânica do jogo é sustentada por uma estrutura de dados real e funcional.
 
-**Estrutura de Dungeons** é um RPG tático por turnos onde o jogador explora um calabouço composto por salas interligadas, enfrenta inimigos em combates estratégicos e resolve puzzles para abrir novos caminhos — tudo enquanto gerencia um recurso limitado: a capacidade de **voltar no tempo**.
+<br/>
 
----
+![divider](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-## 🧠 Estruturas de Dados Aplicadas
+</div>
 
-### 🗺️ Grafo — Navegação entre Salas
-O mapa do jogo é modelado como um **grafo não-direcionado**, onde cada sala é um nó e cada conexão entre salas é uma aresta. O jogador visualiza o grafo completo na tela e navega clicando nos nós acessíveis.
+## 📖 Sobre
+
+**Estrutura de Dungeons** é um RPG top-down onde o jogador explora um calabouço com múltiplos caminhos, enfrenta inimigos em combate tático por turnos e resolve puzzles para avançar — tudo enquanto gerencia um recurso precioso: a capacidade de **voltar no tempo**.
+
+O diferencial do projeto é que as estruturas de dados não são apenas implementadas no código — elas **aparecem visualmente na tela** e definem diretamente a experiência de jogo.
+
+<br/>
+
+![divider](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+## 🧠 Estruturas de Dados
+
+<table>
+<tr>
+<td width="33%" align="center">
+
+### 🗺️ Grafo
+**Navegação entre Salas**
+
+O mapa completo é um grafo renderizado em tempo real. O jogador visualiza todos os nós e arestas e navega clicando nas salas acessíveis. Salas trancadas, becos e caminhos alternativos são representados visualmente com cores diferentes.
+
+</td>
+<td width="33%" align="center">
+
+### 📚 Pilha
+**Viagem no Tempo**
+
+Cada sala visitada é empilhada. O jogador pode desfazer movimentos com `pop()`, voltando ao estado anterior — inimigos ressuscitam, eventos se resetam. O limite de pops cria tensão estratégica.
+
+</td>
+<td width="33%" align="center">
+
+### 🎯 Fila
+**Ordem de Combate**
+
+Todos os participantes rolam iniciativa (1d20) no início de cada batalha. A ordem forma uma fila circular visível na tela: cada personagem age ao chegar à frente e retorna ao fim após seu turno.
+
+</td>
+</tr>
+</table>
+
+<br/>
+
+![divider](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+## 🗺️ Mapa do Calabouço
 
 ```
-Entrada → Encruzilhada → Floresta → Pântano → Ruínas → Torre
-                       → Cripta  → Altar (beco)
-                                 → Catacumba → Câmara → Salão
-                       → Mercado → Templo (beco)
-                                 → Catacumba → Arsenal
-                                            → Antesala → Boss
+                    ╔═══════╗   ╔═════════╗   ╔════════╗   ╔═══════╗
+                    ║Floresta║──║  Pântano ║──║ Ruínas  ║──║ Torre  ║
+                    ╚═══════╝   ╚═════════╝   ╚════════╝   ╚═══════╝
+                        │                                       │
+╔═══════╗   ╔══════════════╗   ╔═══════╗                        │
+║Entrada║──║ Encruzilhada  ║──║ Cripta ║──╔═══════╗             │
+╚═══════╝   ╚══════════════╝   ╚═══════╝  ║ Altar ║ (beco ⚙️)  │
+                    │               │      ╚═══════╝             │
+                    │               └──╔══════════╗──╔════════╗  │
+                    │                  ║Catacumba  ║  ║ Câmara ║──╔════════╗
+                    │                  ╚══════════╝  ╚════════╝  ║ Salão  ║
+                    │                       │                     ╚════════╝
+                    │               ╔═══════╝                         │
+                    │           ╔════════╗                            │
+                    └──╔════════╗  Arsenal ║──────────────────────────┤
+                       ║Mercado ║╚════════╝                           │
+                       ╚════════╝                              ╔══════════╗
+                           │                                   ║ Antesala ║──╔══════╗
+                       ╔════════╗                              ╚══════════╝  ║ Boss ║
+                       ║ Templo ║ (beco 🗝️)                                  ╚══════╝
+                       ╚════════╝
 ```
 
-### 📚 Pilha — Histórico de Navegação
-Cada sala visitada é empilhada (`push`). O jogador pode **voltar no tempo** desfazendo o último movimento (`pop`), com um limite de usos. Ao dar pop, os inimigos da sala abandonada **ressuscitam** — você realmente voltou no tempo.
+<br/>
 
-```
-Topo → [Catacumba]
-       [Cripta]
-       [Encruzilhada]
-       [Entrada]
-```
-
-### 🎯 Fila — Ordem de Combate
-No início de cada batalha, todos os participantes rolam **iniciativa (1d20)**. A ordem resultante forma uma **fila**, onde cada personagem age quando chega à frente e retorna ao fim ao terminar seu turno. Mortos são removidos permanentemente.
-
-```
-► Goblin → Herói → Arqueiro → Goblin → ...
-```
-
----
+![divider](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 ## 🧩 Puzzles
 
-### ⚙️ Alavanca
-Na **Cripta**, um ramal leva ao **Altar** (beco sem saída) onde está uma alavanca. Ativá-la destrava a **Câmara** mais adiante. O jogador precisa usar o pop para voltar e avançar pelo caminho correto.
+<details>
+<summary><b>⚙️ O Puzzle da Alavanca — Caminho B</b></summary>
+<br/>
 
-### 🗝️ Chave Viajante
-No **Templo** (beco sem saída acessado pelo Mercado) há uma chave antiga. Ao inspecionar o **Mercado**, o jogador descobre uma abertura na parede e pode arremessar a chave pelas Catacumbas. Se passar pela Encruzilhada com a chave, um **Goblin a rouba** e a devolve ao Templo — forçando o uso do pop.
+A **Cripta** se bifurca em dois caminhos. Um leva ao **Altar** — um beco sem saída onde está uma alavanca. O outro segue para a **Catacumba** e eventualmente chega na **Câmara**, que está trancada.
 
----
+**Solução:** entrar no Altar, ativar a alavanca, usar `pop()` para voltar à Cripta e seguir pela Catacumba. A Câmara agora está aberta.
 
-## ⚔️ Sistema de Combate
+</details>
 
-- **Turnos por iniciativa** — ordem aleatória a cada combate
-- **Ataque** — dano fixo com chance de acerto baseada em precisão
-- **Defesa** — reduz o dano recebido no próximo ataque inimigo pela metade
-- **HP persistente** — a vida do herói não regenera entre salas
-- **Inspeção pós-combate** — cada sala pode conter cura, itens ou pistas
+<details>
+<summary><b>🗝️ O Puzzle da Chave Viajante — Caminho C</b></summary>
+<br/>
 
----
+O **Templo** é um beco sem saída acessado pelo Mercado. Dentro há uma chave antiga. O **Mercado** tem uma abertura na parede que dá para as **Catacumbas**.
 
-## 🏆 Pontuação
+**Solução:** pegar a chave no Templo → usar `pop()` para voltar ao Mercado → inspecionar e arremessar a chave pela abertura → a chave cai nas Catacumbas → avançar pelo caminho da Cripta até as Catacumbas → pegar a chave → o Arsenal está desbloqueado.
 
-| Fator | Efeito |
+> ⚠️ **Cuidado:** passar pela **Encruzilhada** com a chave faz um Goblin roubá-la e devolvê-la ao Templo.
+
+</details>
+
+<br/>
+
+![divider](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+## ⚔️ Combate
+
+```
+┌─────────────────────────────────────────┐
+│  ► Goblin → Herói → Arqueiro → Goblin   │  ← Fila de turnos (visível)
+├─────────────────────────────────────────┤
+│                                         │
+│   [Sprite Inimigos]   [Sprite Herói]    │
+│                                         │
+│  ❤ Herói: 120 / 150                     │
+├─────────────────────────────────────────┤
+│  [Atacar Goblin]  [Atacar Arqueiro]     │
+│           [🛡 Defender]                 │
+└─────────────────────────────────────────┘
+```
+
+| Ação | Efeito |
 |---|---|
-| Pontos base | +1000 |
-| Salas visitadas | -20 por sala |
-| Pops usados | -50 por pop |
-| Usou alavanca | +200 |
-| Usou chave | +200 |
+| ⚔️ Atacar | Dano fixo com chance de acerto (precisão) |
+| 🛡️ Defender | Reduz o próximo dano recebido pela metade |
+| 🎲 Iniciativa | 1d20 por participante define a ordem da fila |
+| 💀 Morte | Personagens mortos são removidos da fila permanentemente |
+
+<br/>
+
+![divider](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+## 🏆 Pontuação Final
+
+| Fator | Pontos |
+|---|---|
+| Base | +1000 |
+| Por sala visitada | -20 |
+| Por pop usado | -50 |
+| Resolveu puzzle da alavanca | +200 |
+| Resolveu puzzle da chave | +200 |
 | Vida restante | +até 150 |
 
----
+> 💡 Caminhos com puzzles rendem bônus — explorar os becos compensa!
 
-## 🛠️ Como Executar
+<br/>
 
-### Pré-requisitos
-- [Godot Engine 4.x](https://godotengine.org/download)
+![divider](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-### Passos
+## 🚀 Como Executar
+
+**Pré-requisito:** [Godot Engine 4.x](https://godotengine.org/download)
+
 ```bash
 git clone https://github.com/gABIREUSU/Estrutura-de-Dungeons.git
 ```
-1. Abra o Godot 4
-2. Clique em **Import** e selecione a pasta do projeto
-3. Pressione **F5** ou clique em ▶ para rodar
 
----
+1. Abra o **Godot 4**
+2. Clique em **Import** e selecione a pasta do projeto
+3. Pressione **F5** ou clique em ▶️ para rodar
+
+<br/>
+
+![divider](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 ## 📁 Estrutura do Projeto
 
 ```
 res://
 ├── scenes/
-│   ├── ui/          # Menu, Mapa de Navegação, Game Over, Vitória
-│   ├── rooms/       # Cenas de cada sala do calabouço
-│   └── combat/      # Gerenciador de Combate
+│   ├── ui/                   # Menu, Mapa, Game Over, Vitória
+│   ├── rooms/                # Cenas das salas do calabouço
+│   └── combat/               # Gerenciador de Combate
 └── scripts/
     ├── GameManager.gd        # Autoload — grafo, pilha, estado global
-    ├── gerenciador_combate.gd # Fila de combate e lógica de turnos
-    ├── grafo_node.gd          # Renderização e interação do grafo
+    ├── gerenciador_combate.gd # Fila de combate e turnos
+    ├── grafo_node.gd          # Renderização do grafo na tela
     ├── sala_base.gd           # Classe base para todas as salas
-    ├── mapa_navegacao.gd      # Menu de navegação entre salas
+    ├── mapa_navegacao.gd      # Menu de navegação
     └── main_menu.gd           # Tela inicial
 ```
 
----
+<br/>
+
+![divider](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 ## 👥 Integrantes
 
-| Nome |
-|---|
-| Gabriel Andrade |
-| Taylor  |
+<table align="center">
+<tr>
+<td align="center">
+<b>Gabriel Andrade</b><br/>
+<a>Taylor Junio</a>
+</td>
+</tr>
+</table>
 
----
+<br/>
 
-## 📚 Disciplina
+![divider](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-**Estrutura de Dados II** — Ciência da Computação  
-Universidade FUMEC · 1º Semestre 2025  
-Profª. Amanda Danielle Lima de Oliveira
+<div align="center">
+
+**Estrutura de Dados II** · Ciência da Computação · FUMEC  
+Profª. Amanda Danielle Lima de Oliveira · 1º Semestre 2025
+
+</div>
