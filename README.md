@@ -19,7 +19,7 @@
 
 ## 📖 Sobre
 
-**Estrutura de Dungeons** é um RPG top-down onde o jogador explora um calabouço com múltiplos caminhos, enfrenta inimigos em combate tático por turnos e resolve puzzles para avançar — tudo enquanto gerencia um recurso precioso: a capacidade de **voltar no tempo**.
+**Estrutura de Dungeons** é um RPG onde o jogador explora um calabouço com múltiplos caminhos, enfrenta inimigos em combate tático por turnos e resolve puzzles para avançar — tudo enquanto gerencia um recurso precioso: a capacidade de **voltar no tempo**.
 
 O diferencial do projeto é que as estruturas de dados não são apenas implementadas no código — elas **aparecem visualmente na tela** e definem diretamente a experiência de jogo.
 
@@ -66,26 +66,28 @@ Todos os participantes rolam iniciativa (1d20) no início de cada batalha. A ord
 
 ```
                     ╔═══════╗   ╔═════════╗   ╔════════╗   ╔═══════╗
-                    ║Floresta║──║  Pântano ║──║ Ruínas  ║──║ Torre  ║
-                    ╚═══════╝   ╚═════════╝   ╚════════╝   ╚═══════╝
+                    ║Floresta╠───╣  Pântano ╠───╣ Ruínas  ╠───╣ Torre  ║
+                    ╚═══╤═══╝   ╚═════════╝   ╚════════╝   ╚═══╤═══╝
                         │                                       │
-╔═══════╗   ╔══════════════╗   ╔═══════╗                        │
-║Entrada║──║ Encruzilhada  ║──║ Cripta ║──╔═══════╗             │
-╚═══════╝   ╚══════════════╝   ╚═══════╝  ║ Altar ║ (beco ⚙️)  │
+╔═══════╗   ╔═══════════╧══╗   ╔════════╗                       │
+║Entrada╠───╣ Encruzilhada ╠───╣  Cripta ╠──╔═══════╗           │
+╚═══════╝   ╚══════════════╝   ╚════╤═══╝  ║ Altar ║(beco ⚙️)  │
                     │               │      ╚═══════╝             │
-                    │               └──╔══════════╗──╔════════╗  │
-                    │                  ║Catacumba  ║  ║ Câmara ║──╔════════╗
-                    │                  ╚══════════╝  ╚════════╝  ║ Salão  ║
-                    │                       │                     ╚════════╝
-                    │               ╔═══════╝                         │
-                    │           ╔════════╗                            │
-                    └──╔════════╗  Arsenal ║──────────────────────────┤
-                       ║Mercado ║╚════════╝                           │
-                       ╚════════╝                              ╔══════════╗
-                           │                                   ║ Antesala ║──╔══════╗
-                       ╔════════╗                              ╚══════════╝  ║ Boss ║
-                       ║ Templo ║ (beco 🗝️)                                  ╚══════╝
-                       ╚════════╝
+                    │        ╔══════╧═════╗                      │
+                    │        ║  Catacumba ╠──╔════════╗──╔══════╗│
+                    │        ╚══════╤═════╝  ║ Câmara ╠──╣ Salão╠╝
+                    │               │        ╚════════╝  ╚══════╝
+                    │        ╔══════╧═════╗
+                    │        ║  Arsenal   ║
+                    │        ╚══════╤═════╝
+                    │               │
+                ╔═══╧════╗          │         ╔══════════╗   ╔══════╗
+                ║Mercado ║          └─────────╣ Antesala ╠───╣ Boss ║
+                ╚═══╤════╝                    ╚══════════╝   ╚══════╝
+                    │
+               ╔════╧═══╗
+               ║ Templo ║ (beco 🗝️)
+               ╚════════╝
 ```
 
 <br/>
@@ -127,7 +129,7 @@ O **Templo** é um beco sem saída acessado pelo Mercado. Dentro há uma chave a
 │  ► Goblin → Herói → Arqueiro → Goblin   │  ← Fila de turnos (visível)
 ├─────────────────────────────────────────┤
 │                                         │
-│   [Sprite Inimigos]   [Sprite Herói]    │
+│        Inimigos          Herói          │
 │                                         │
 │  ❤ Herói: 120 / 150                     │
 ├─────────────────────────────────────────┤
@@ -138,10 +140,11 @@ O **Templo** é um beco sem saída acessado pelo Mercado. Dentro há uma chave a
 
 | Ação | Efeito |
 |---|---|
-| ⚔️ Atacar | Dano fixo com chance de acerto (precisão) |
+| ⚔️ Atacar | Dano fixo com chance de acerto baseada em precisão |
 | 🛡️ Defender | Reduz o próximo dano recebido pela metade |
 | 🎲 Iniciativa | 1d20 por participante define a ordem da fila |
 | 💀 Morte | Personagens mortos são removidos da fila permanentemente |
+| 🔁 Pop | Inimigos da sala abandonada ressuscitam |
 
 <br/>
 
@@ -185,16 +188,16 @@ git clone https://github.com/gABIREUSU/Estrutura-de-Dungeons.git
 ```
 res://
 ├── scenes/
-│   ├── ui/                   # Menu, Mapa, Game Over, Vitória
-│   ├── rooms/                # Cenas das salas do calabouço
-│   └── combat/               # Gerenciador de Combate
+│   ├── ui/                    # Menu, Mapa, Game Over, Vitória
+│   ├── rooms/                 # Cenas das salas do calabouço
+│   └── combat/                # Gerenciador de Combate
 └── scripts/
-    ├── GameManager.gd        # Autoload — grafo, pilha, estado global
-    ├── gerenciador_combate.gd # Fila de combate e turnos
-    ├── grafo_node.gd          # Renderização do grafo na tela
-    ├── sala_base.gd           # Classe base para todas as salas
-    ├── mapa_navegacao.gd      # Menu de navegação
-    └── main_menu.gd           # Tela inicial
+    ├── GameManager.gd         # Autoload — grafo, pilha, estado global
+    ├── gerenciador_combate.gd  # Fila de combate e turnos
+    ├── grafo_node.gd           # Renderização do grafo na tela
+    ├── sala_base.gd            # Classe base para todas as salas
+    ├── mapa_navegacao.gd       # Menu de navegação
+    └── main_menu.gd            # Tela inicial
 ```
 
 <br/>
@@ -206,8 +209,14 @@ res://
 <table align="center">
 <tr>
 <td align="center">
-<b>Gabriel Andrade</b><br/>
-<a>Taylor Junio</a>
+<b>Gabriel Reus</b><br/>
+<a href="https://github.com/gABIREUSU">@gABIREUSU</a>
+</td>
+<td align="center">
+<b>Gabriel Andrade</b>
+</td>
+<td align="center">
+<b>Taylor Junio</b>
 </td>
 </tr>
 </table>
