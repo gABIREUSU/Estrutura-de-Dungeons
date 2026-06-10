@@ -208,16 +208,8 @@ res://
 
 <table align="center">
 <tr>
-<td align="center">
-<b>Gabriel Reus</b><br/>
-<a href="https://github.com/gABIREUSU">@gABIREUSU</a>
-</td>
-<td align="center">
-<b>Gabriel Andrade</b>
-</td>
-<td align="center">
-<b>Taylor Junio</b>
-</td>
+<td align="center"><b>Gabriel Andrade</b></td>
+<td align="center"><b>Taylor Junio</b></td>
 </tr>
 </table>
 
