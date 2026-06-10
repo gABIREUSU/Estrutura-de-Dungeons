@@ -2,41 +2,27 @@
 
 [ext_resource type="Script" uid="uid://ce4wfaia8bb3v" path="res://scripts/gerenciador_combate.gd" id="1_ob1xn"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ob1xn"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.15127608, 0.15127608, 0.15127608, 0.9882353)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
 [node name="GerenciadorCombate" type="Node2D" unique_id=1966226639]
 script = ExtResource("1_ob1xn")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1668466690]
+visible = false
 offset_right = 1153.0
 offset_bottom = 652.0
 color = Color(0, 0, 0, 0.6784314)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1597495578]
-
-[node name="LabelStatus" type="Label" parent="CanvasLayer" unique_id=1398243648]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -111.0
-offset_top = -166.0
-offset_right = 111.0
-offset_bottom = -143.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "Seu turno! Escolha uma ação"
-horizontal_alignment = 1
-
-[node name="LabelHpJogador" type="Label" parent="CanvasLayer" unique_id=971604205]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 79.0
-offset_top = -67.0
-offset_right = 120.0
-offset_bottom = -44.0
-grow_vertical = 0
-text = "10Hp"
 
 [node name="BotaoDefender" type="Button" parent="CanvasLayer" unique_id=1245950580]
 anchors_preset = 7
@@ -66,24 +52,65 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="ContainerAcoes" type="HBoxContainer" parent="CanvasLayer" unique_id=1045701280]
-anchors_preset = 5
+anchors_preset = 7
 anchor_left = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-offset_left = 379.0
-offset_top = 29.0
-offset_right = 419.0
-offset_bottom = 69.0
-grow_horizontal = 2
-
-[node name="ContainerFila" type="HBoxContainer" parent="CanvasLayer" unique_id=1352147481]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
+anchor_bottom = 1.0
 offset_left = -20.0
-offset_top = 27.0
+offset_top = -239.0
 offset_right = 20.0
-offset_bottom = 67.0
+offset_bottom = -199.0
 grow_horizontal = 2
+grow_vertical = 0
+
+[node name="PanelContainer3" type="PanelContainer" parent="CanvasLayer" unique_id=1563509063]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 98.0
+offset_top = -124.0
+offset_right = 150.0
+offset_bottom = -92.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ob1xn")
+
+[node name="LabelHpJogador" type="Label" parent="CanvasLayer/PanelContainer3" unique_id=971604205]
+layout_mode = 2
+text = "10Hp"
+
+[node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer" unique_id=393323468]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -166.0
+offset_right = 8.0
+offset_bottom = -142.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ob1xn")
+
+[node name="LabelStatus" type="Label" parent="CanvasLayer/PanelContainer2" unique_id=1398243648]
+layout_mode = 2
+text = "Seu turno! Escolha uma ação"
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer" unique_id=1915336237]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -8.0
+offset_top = 31.0
+offset_right = 8.0
+offset_bottom = 71.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ob1xn")
+
+[node name="ContainerFila" type="HBoxContainer" parent="CanvasLayer/PanelContainer" unique_id=1352147481]
+layout_mode = 2
 alignment = 1
 
 [connection signal="pressed" from="CanvasLayer/BotaoDefender" to="." method="_on_botao_defender_pressed"]

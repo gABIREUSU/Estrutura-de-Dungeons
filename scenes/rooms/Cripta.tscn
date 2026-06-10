@@ -16,5 +16,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Cripta" type="Sprite2D" parent="." unique_id=728723268]
-position = Vector2(318, 196)
+scale = Vector2(0.6896918, 0.68969184)
 texture = ExtResource("2_e3oek")
+centered = false

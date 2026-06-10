@@ -3,7 +3,6 @@ extends CanvasLayer
 @onready var label_pontos = $Control/LabelPontos
 @onready var label_detalhes = $Control/LabelDetalhes
 @onready var botao = $Control/Button
-@onready var container_fila = $CanvasLayer/ContainerFila  # HBoxContainer no topo
 
 func _ready():
 	var pontos = GameManager.calcular_pontuacao()
@@ -41,3 +40,7 @@ func _on_voltar_pressed():
 	GameManager.salas["Encruzilhada"]["desbloqueada"] = true
 	queue_free()
 	get_tree().change_scene_to_file("res://scenes/ui/MainMenu.tscn")
+
+
+func _on_button_pressed() -> void:
+	_on_voltar_pressed()

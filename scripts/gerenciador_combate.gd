@@ -7,10 +7,10 @@ var personagem_atual = null
 @onready var canvas = $CanvasLayer
 @onready var botao_defender = $CanvasLayer/BotaoDefender
 @onready var container_inimigos = $CanvasLayer/ContainerInimigos
-@onready var label_status = $CanvasLayer/LabelStatus
-@onready var label_hp_jogador = $CanvasLayer/LabelHpJogador
+@onready var label_status = $CanvasLayer/PanelContainer2/LabelStatus
+@onready var label_hp_jogador = $CanvasLayer/PanelContainer3/LabelHpJogador
 @onready var container_acoes = $CanvasLayer/ContainerAcoes
-@onready var container_fila = $CanvasLayer/ContainerFila
+@onready var container_fila = $CanvasLayer/PanelContainer/ContainerFila
 
 func _ready():
 	iniciar_combate()

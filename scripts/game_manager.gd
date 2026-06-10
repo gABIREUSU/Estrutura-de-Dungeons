@@ -191,10 +191,10 @@ var salas: Dictionary = {
 
 var jogador = {
 	"nome": "Herói",
-	"hp": 150,
-	"hp_max": 150,
-	"ataque": 25,
-	"precisao": 85,
+	"hp": 270,
+	"hp_max": 270,
+	"ataque": 35,
+	"precisao": 90,
 	"defendendo": false,
 	"tem_chave": false, 
 	"tipo": "jogador"

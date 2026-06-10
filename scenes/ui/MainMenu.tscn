@@ -3,6 +3,28 @@
 [ext_resource type="Script" uid="uid://2cpbapgnxm6p" path="res://scripts/main_menu.gd" id="1_vjtqc"]
 [ext_resource type="Texture2D" uid="uid://cw7fn0p078rke" path="res://imagens/Menu.png" id="2_6jbdy"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6jbdy"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.0627451, 0.16078432, 0.24313726, 0.78039217)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iwbf0"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.15127608, 0.15127608, 0.15127608, 0.9882353)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
 [node name="Menu" type="Control" unique_id=357275353]
 layout_mode = 3
 anchors_preset = 15
@@ -25,20 +47,53 @@ scale = Vector2(0.69075453, 0.69075453)
 texture = ExtResource("2_6jbdy")
 centered = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2112644999]
-layout_mode = 0
-offset_left = 403.0
-offset_top = 335.0
-offset_right = 754.0
-offset_bottom = 473.0
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1301640507]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -301.0
+offset_right = 197.5
+offset_bottom = -195.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6jbdy")
 
-[node name="jogar_btn" type="Button" parent="VBoxContainer" unique_id=411826561]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=2112644999]
 layout_mode = 2
+
+[node name="jogar_btn" type="Button" parent="PanelContainer/VBoxContainer" unique_id=411826561]
+layout_mode = 2
+size_flags_vertical = 3
 text = "Jogar"
 
-[node name="sair_btn" type="Button" parent="VBoxContainer" unique_id=457903091]
+[node name="sair_btn" type="Button" parent="PanelContainer/VBoxContainer" unique_id=457903091]
 layout_mode = 2
+size_flags_vertical = 3
 text = "Sair"
 
-[connection signal="pressed" from="VBoxContainer/jogar_btn" to="." method="_on_jogar_btn_pressed"]
-[connection signal="pressed" from="VBoxContainer/sair_btn" to="." method="_on_sair_btn_pressed"]
+[node name="PanelContainer2" type="PanelContainer" parent="." unique_id=1421226058]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -129.5
+offset_top = -95.0
+offset_right = 129.5
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_iwbf0")
+
+[node name="LabelStatus" type="Label" parent="PanelContainer2" unique_id=495134818]
+layout_mode = 2
+text = "Alunos: Gabriel Andrade e Taylor Junio"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/jogar_btn" to="." method="_on_jogar_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/sair_btn" to="." method="_on_sair_btn_pressed"]

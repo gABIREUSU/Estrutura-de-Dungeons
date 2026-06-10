@@ -36,7 +36,24 @@ offset_bottom = -3.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 123
-text = "VITÓRIA"
+text = "VITORIA"
+
+[node name="Label" type="Label" parent="Control/Label" unique_id=1892533234]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 19.0
+offset_top = -121.0
+offset_right = 88.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5707964
+theme_override_font_sizes/font_size = 120
+text = "`"
 
 [node name="LabelPontos" type="Label" parent="Control" unique_id=2034537404]
 layout_mode = 1
@@ -84,3 +101,5 @@ offset_bottom = -51.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Voltar ao Menu"
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
